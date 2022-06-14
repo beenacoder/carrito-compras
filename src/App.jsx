@@ -1,12 +1,21 @@
 import styled from 'styled-components'
-import {NavLink, Switch, Route} from 'react-router-dom'
-import Inicio from './componentes/Inicio'
-import Blog from './componentes/Blog'
-import Tienda from './componentes/Tienda'
+import {NavLink, Routes, Route} from 'react-router-dom'
+import Inicio from './components/Inicio'
+import Blog from './components/Blog'
+import Tienda from './components/Tienda'
+import Error404 from './components/Error404'
 
 
 
 const App = () => {
+
+//Ubicamos aqui la base de datos de productos para poder usarla en toda la aplicacion
+    const productos = [
+        {id:1, nombre: "Producto 1"},
+        {id:2, nombre: "Producto 2"},
+        {id:3, nombre: "Producto 3"},
+        {id:4, nombre: "Producto 4"}
+    ];
     return (
         <Contenedor>
             <Menu>  
@@ -15,9 +24,14 @@ const App = () => {
                 <NavLink to="/tienda">Tienda</NavLink>
             </Menu>
             <main>
-                <Switch>
-                    <Route path="/" component={<Inicio />}/>
-                </Switch>
+                <Routes>
+                    <Route path="*" element={<Error404 />}/>
+                    <Route path="/" element={<Inicio />}/>
+                    <Route path="/blog" element={<Blog />}/>
+                    <Route path="/tienda" element={<Tienda 
+                                                    productos={productos} /> }> 
+                    </Route> 
+                </Routes>
             </main>
         </Contenedor>  
     )
