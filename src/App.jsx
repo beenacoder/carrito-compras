@@ -1,5 +1,10 @@
 import styled from 'styled-components'
-import {NavLink} from 'react-router-dom'
+import {NavLink, Switch, Route} from 'react-router-dom'
+import Inicio from './componentes/Inicio'
+import Blog from './componentes/Blog'
+import Tienda from './componentes/Tienda'
+
+
 
 const App = () => {
     return (
@@ -9,6 +14,11 @@ const App = () => {
                 <NavLink to="/blog">Blog</NavLink>
                 <NavLink to="/tienda">Tienda</NavLink>
             </Menu>
+            <main>
+                <Switch>
+                    <Route path="/" component={<Inicio />}/>
+                </Switch>
+            </main>
         </Contenedor>  
     )
 }
