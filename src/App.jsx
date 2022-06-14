@@ -28,6 +28,8 @@ const Contenedor = styled.div`
  
 const Menu = styled.nav`
     width: 100%;
+    display:flex;
+    justify-content: space-between;
     text-align: center;
     background: #092c4c;
     grid-column: span 2;
@@ -37,6 +39,7 @@ const Menu = styled.nav`
         color: #fff;
         display: inline-block;
         padding: 15px 20px;
+        width: 80%;
     }
  
     a:hover {
