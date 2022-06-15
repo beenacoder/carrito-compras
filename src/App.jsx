@@ -1,14 +1,17 @@
+import { useState } from 'react'
 import styled from 'styled-components'
 import {NavLink, Routes, Route} from 'react-router-dom'
 import Inicio from './components/Inicio'
 import Blog from './components/Blog'
 import Tienda from './components/Tienda'
 import Error404 from './components/Error404'
+import Carrito from './components/Carrito'
 
 
 
 const App = () => {
-
+//Ubicamos aqui los productos del carrito para poder acceder de todos lados
+    const [carrito, cambiarCarrito] = useState([]);
 //Ubicamos aqui la base de datos de productos para poder usarla en toda la aplicacion
     const productos = [
         {id:1, nombre: "Producto 1"},
@@ -28,11 +31,12 @@ const App = () => {
                     <Route path="*" element={<Error404 />}/>
                     <Route path="/" element={<Inicio />}/>
                     <Route path="/blog" element={<Blog />}/>
-                    <Route path="/tienda" element={<Tienda 
-                                                    productos={productos} /> }> 
-                    </Route> 
+                    <Route path="/tienda" element={<Tienda productos={productos} />}> </Route> 
                 </Routes>
             </main>
+            <aside>
+                <Carrito carrito={carrito} />
+            </aside>
         </Contenedor>  
     )
 }
