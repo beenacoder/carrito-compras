@@ -43,7 +43,28 @@ const App = () => {
             if(yaEstaEnCarrito) {
                 //Para ello tenemos que buscarlo, obtener su posicion en el arreglo.
                 //Y en base a su posicion ya actualizamos el valor.
+                nuevoCarrito.forEach((productoDeCarrito, index) => {
+                    if(productoDeCarrito.id === idProducto){
+                        const cantidad = nuevoCarrito[index].cantidad;
+                        nuevoCarrito[index] = {
+                            id: idProducto, 
+                            nombre: nombre, 
+                            cantidad: cantidad +1
+                        }
+                    }
+                })
+                //De otra forma entonces agregamos el producto al arreglo
+            } else {
+                nuevoCarrito.push(
+                    {
+                        id:idProducto,
+                        nombre:nombre,
+                        cantidad: 1
+                    }
+                )
             }
+            //Por ultimo actualizamos el carrito
+            cambiarCarrito(nuevoCarrito);
         }
     }
 
